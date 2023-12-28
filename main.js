@@ -14,6 +14,52 @@ function selectMessage() {
     return messageArr[Math.floor(Math.random()*3)];
 }
 
-//Test
+//Get userinput
 
-console.log(selectMessage());
+const getUserInput = () => {
+    let noun = "Dog";
+    let adj = "happy";
+    let verb = "sprints";
+
+    return [noun,adj,verb];
+}
+
+//Create random message
+
+function randomMessage() {
+    //Get user input; expecting [NOUN,ADJ,VERB] format.
+    let userInput = getUserInput();
+
+    //Get random message
+    let randomMessageText = selectMessage();
+
+    //Replace the appropriate text
+    randomMessageText = randomMessageText.map(str => {
+        if (str.substring(0,"_NOUN_".length) === "_NOUN_") {
+            let extra = str.charAt(str.length-1);
+            if (extra === "_") {
+                extra = "";
+            }
+            return userInput[0] +extra;
+        } else if (str.substring(0,"_ADJ_".length) === "_ADJ_") {
+            let extra = str.charAt(str.length-1);
+            if (extra === "_") {
+                extra = "";
+            }
+            return userInput[1]+extra;
+        } else if (str.substring(0,"_VERB_".length) === "_VERB_") {
+            let extra = str.charAt(str.length-1);
+            if (extra === "_") {
+                extra = "";
+            }
+            return userInput[2]+extra;
+        } else {
+            return str;
+        }
+    });
+
+    console.log(randomMessageText.join(" "));
+}
+
+//Run Program
+randomMessage();
