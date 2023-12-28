@@ -17,9 +17,9 @@ function selectMessage() {
 //Get userinput
 
 const getUserInput = () => {
-    let noun = "Dog";
-    let adj = "happy";
-    let verb = "sprints";
+    let noun = "Lucy";
+    let adj = "awesome";
+    let verb = "sleeps";
 
     return [noun,adj,verb];
 }
